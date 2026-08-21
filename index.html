@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXAM SMKN 2 Klaten</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url('https://nafiszain90-gif.github.io/asas/batiksmk.png');
+	background-repeat: repeat;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 1px;
+            box-sizing: border-box;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 700px; /* Diperlebar agar muat bingkai form */
+            width: 100%;
+        }
+        h2 {
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+        /* Bingkai untuk menampilkan Form */
+        .bingkai-form {
+            width: 100%;
+            height: 100%; /* Mengatur tinggi bingkai form */
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+        .no-form {
+            color: #e74c3c;
+            font-style: italic;
+            padding: 40px 0;
+            font-weight: bold;
+        }
+        .info-waktu {
+            font-size: 0.9em;
+            color: #7f8c8d;
+            margin-top: 20px;
+            border-top: 1px solid #eee;
+            padding-top: 10px;
+        }
+    </style>
+</head>
+<script>
+        // 1. Menonaktifkan Klik Kanan
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        // 2. Menonaktifkan Tombol F12 dan Kombinasi Keyboard Tertentu
+        document.addEventListener('keydown', function(e) {
+            // Mencegah tombol F12
+            if (e.key === 'F12') {
+                e.preventDefault();
+            }
+
+            // Mencegah Ctrl+Shift+I (Inspect Element)
+            // Mencegah Ctrl+Shift+J (Console)
+            // Mencegah Ctrl+Shift+C (Inspect Element Mode)
+            if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j' || e.key === 'C' || e.key === 'c')) {
+                e.preventDefault();
+            }
+
+            // Mencegah Ctrl+U (View Source)
+            if (e.ctrlKey && (e.key === 'U' || e.key === 'u')) {
+                e.preventDefault();
+            }
+        });
+    </script>
+<body>
+
+<div class="container">
+    <h2>Akses TRYOUT TKA XII SMKN 2 KLATEN</h2>
+    
+    <!-- Tempat di mana iframe/bingkai form akan muncul secara dinamis -->
+    <div id="container-link">
+        <p class="no-form">Memeriksa jadwal formulir...</p>
+    </div>
+
+    <div class="info-waktu" id="live-clock">
+        Waktu sekarang: --:--:--
+    </div>
+</div>
+
+<script>
+    // JADWAL FORMULIR
+    // Pastikan URL yang digunakan mendukung embedding (bisa dimasukkan ke iframe)
+    const daftarJadwal = [
+        {
+            tanggal: '2026-08-24', 
+            jamMulai: '07:40', 
+            jamSelesai: '09:05', 
+            url: 'https://docs.google.com/forms/d/e/1FAIpQLScCiXkkVZ81Ztt1QlG9hv7yqrmAJkYUiymGkDPLRF8SdxUffg/viewform?usp=dialog' // Contoh link embed Google Form
+        },
+        {
+            tanggal: '2026-08-26', 
+            jamMulai: '07:40', 
+            jamSelesai: '09:05', // Sesi aktif saat ini
+            url: 'https://docs.google.com/forms/d/e/1FAIpQLScTBvbQALnlDAoxL9zmqXEuGGm8kS6qLyJ9OSUO3NaI8nDu3A/viewform?usp=publish-editor'
+        },
+	{
+            tanggal: '2026-08-27', 
+            jamMulai: '07:40', 
+            jamSelesai: '09:05', 
+            url: 'https://docs.google.com/forms/d/e/1FAIpQLSfyhGpLB5C8mh0PQjSpK4BHWdFEdZ7MMtsa32ch3XkiqRfVpg/viewform?usp=publish-editor' 
+        },
+      	 {
+            tanggal: '2026-08-28', 
+            jamMulai: '07:40', 
+            jamSelesai: '09:05', // Sesi aktif saat ini
+            url: 'https://docs.google.com/forms/d/e/1FAIpQLScL8nd4Jz5h3btRxqqCFWaezjKVKRIIeF1o4Z-ATetCzkEsfA/viewform?usp=publish-editor'
+        },
+	{
+            tanggal: '2026-08-31', 
+            jamMulai: '07:40', 
+            jamSelesai: '09:05', 
+            url: 'https://docs.google.com/forms/d/e/1FAIpQLScNtR4G6sKUQvPuKL_G1ZHVUB83vNxYF43-_1xZxn0Rc-ocZQ/viewform?usp=publish-editor' 
+        },
+        {
+            tanggal: '2026-06-04', 
+            jamMulai: '09:25', 
+            jamSelesai: '11:10', // Sesi aktif saat ini
+            url: 'https://docs.google.com/forms/d/e/1FAIpQLScZmsXcXAmTckpUOdTBtcBBXwsoZha0EAOeLy4BTA9fBvsYng/viewform'
+        },
+	 {
+            tanggal: '2026-06-04', 
+            jamMulai: '12:25', 
+            jamSelesai: '14:10', // Sesi aktif saat ini
+            url: 'https://docs.google.com/forms/d/e/1FAIpQLScDsEAjXBlj8jjlxHYX1MJL3DoMX3kQS8Md0smnYomEqrAPLQ/viewform'
+        },
+	 {
+            tanggal: '2026-06-05', 
+            jamMulai: '07:25', 
+            jamSelesai: '09:10', // Sesi aktif saat ini
+            url: 'https://docs.google.com/forms/d/e/1FAIpQLScoEvF5Y8sXo9fYZqY1paunlQxpZqjVVZCVeJKO34_1UP-P9A/viewform'
+        },
+	 {
+            tanggal: '2026-08-21', 
+            jamMulai: '14:54', 
+            jamSelesai: '15:10', // Sesi aktif saat ini
+            url: 'https://docs.google.com/forms/d/e/1FAIpQLSdo5t92xUW07q5poXmXaDFLyoHS72AcI2__d1m8oAv3sPomAA/viewform'
+        },
+    ];
+
+    function cekDanTampilkanForm() {
+        const sekarang = new Date();
+        
+        const tahun = sekarang.getFullYear();
+        const bulan = String(sekarang.getMonth() + 1).padStart(2, '0');
+        const tanggal = String(sekarang.getDate()).padStart(2, '0');
+        const tanggalSekarangStr = `${tahun}-${bulan}-${tanggal}`;
+        
+        const jam = String(sekarang.getHours()).padStart(2, '0');
+        const menit = String(sekarang.getMinutes()).padStart(2, '0');
+        const detik = String(sekarang.getSeconds()).padStart(2, '0');
+        const jamSekarangStr = `${jam}:${menit}`;
+
+        document.getElementById('live-clock').innerText = `Waktu sekarang: ${tanggalSekarangStr} Pukul ${jam}:${menit}:${detik}`;
+
+        const containerLink = document.getElementById('container-link');
+        
+        const formAktif = daftarJadwal.find(jadwal => {
+            return jadwal.tanggal === tanggalSekarangStr && 
+                   jamSekarangStr >= jadwal.jamMulai && 
+                   jamSekarangStr <= jadwal.jamSelesai;
+        });
+
+        if (formAktif) {
+            // Memeriksa apakah iframe sudah ada agar tidak terus-menerus reload setiap detik
+            const iframeAda = document.getElementById('iframe-form');
+            if (!iframeAda || iframeAda.src !== formAktif.url) {
+                containerLink.innerHTML = `
+                    <iframe id="iframe-form" src="${formAktif.url}" class="bingkai-form" frameborder="0" marginheight="0" marginwidth="0">
+                        Memuat...
+                    </iframe>`;
+            }
+        } else {
+            containerLink.innerHTML = `<p class="no-form">Maaf, saat ini tidak ada EXAM/Ujian yang dibuka sesuai jadwal.</p>`;
+        }
+    }
+
+    // Jalankan realtime cek
+    cekDanTampilkanForm();
+    setInterval(cekDanTampilkanForm, 1000);
+</script>
+
+</body>
+</html>
